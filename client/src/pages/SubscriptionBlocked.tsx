@@ -108,18 +108,18 @@ export default function SubscriptionBlocked() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4 sm:p-6">
+    <div className="min-h-screen flex items-center justify-center bg-muted p-4 sm:p-6">
       <div className="max-w-lg w-full space-y-5">
         <div className="text-center space-y-2">
           <Icon className="h-10 w-10 text-amber-500 mx-auto" />
-          <h1 className="text-xl font-bold text-gray-900">{info.title}</h1>
-          <p className="text-sm text-gray-500">{info.body(user)}</p>
+          <h1 className="text-xl font-bold text-foreground">{info.title}</h1>
+          <p className="text-sm text-muted-foreground">{info.body(user)}</p>
         </div>
 
         {!isSuspended && !submitted && (
-          <form onSubmit={handleSubmit} className="rounded-xl border bg-white p-4 space-y-4 shadow-sm">
-            <p className="text-sm font-semibold text-gray-800">Submit payment proof</p>
-            <p className="text-xs text-gray-500">
+          <form onSubmit={handleSubmit} className="rounded-xl border bg-card p-4 space-y-4 shadow-sm">
+            <p className="text-sm font-semibold text-foreground">Submit payment proof</p>
+            <p className="text-xs text-muted-foreground">
               Pay via MoMo/Airtel/bank, then enter the reference here. We activate after confirming — usually same day.
             </p>
 
@@ -134,13 +134,13 @@ export default function SubscriptionBlocked() {
                   }`}
                 >
                   <div className="flex justify-between items-baseline">
-                    <span className="font-semibold text-gray-900">{TIER_LABELS[t]}</span>
+                    <span className="font-semibold text-foreground">{TIER_LABELS[t]}</span>
                     <span className="text-indigo-600 font-bold text-sm">
                       {formatUgx(TIER_AMOUNTS[t])}
-                      <span className="text-xs font-normal text-gray-500 ml-1">{BILLING_PERIOD}</span>
+                      <span className="text-xs font-normal text-muted-foreground ml-1">{BILLING_PERIOD}</span>
                     </span>
                   </div>
-                  <p className="text-xs text-gray-500 mt-0.5">{TIER_STUDENT_RANGES[t]}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{TIER_STUDENT_RANGES[t]}</p>
                 </button>
               ))}
             </div>

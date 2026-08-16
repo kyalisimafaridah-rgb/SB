@@ -37,8 +37,8 @@ const STATUS_COLORS: Record<string, string> = {
   active: "bg-green-100 text-green-700",
   trial: "bg-blue-100 text-blue-700",
   expired: "bg-red-100 text-red-700",
-  suspended: "bg-gray-100 text-gray-600",
-  free: "bg-gray-100 text-gray-500",
+  suspended: "bg-muted text-muted-foreground",
+  free: "bg-muted text-muted-foreground",
 };
 
 const TIER_LABELS: Record<string, string> = {
@@ -258,19 +258,19 @@ export default function AdminDashboard() {
           <Card className="min-w-0">
             <CardContent className="p-3 sm:p-4 text-center">
               <p className="text-lg sm:text-2xl font-bold text-green-600 break-words">{revenue.thisMonth.toLocaleString()}</p>
-              <p className="text-xs text-gray-500">This Month (UGX)</p>
+              <p className="text-xs text-muted-foreground">This Month (UGX)</p>
             </CardContent>
           </Card>
           <Card className="min-w-0">
             <CardContent className="p-3 sm:p-4 text-center">
-              <p className="text-lg sm:text-2xl font-bold text-gray-700 break-words">{revenue.lastMonth.toLocaleString()}</p>
-              <p className="text-xs text-gray-500">Last Month (UGX)</p>
+              <p className="text-lg sm:text-2xl font-bold text-muted-foreground break-words">{revenue.lastMonth.toLocaleString()}</p>
+              <p className="text-xs text-muted-foreground">Last Month (UGX)</p>
             </CardContent>
           </Card>
           <Card className="min-w-0">
             <CardContent className="p-3 sm:p-4 text-center">
               <p className="text-lg sm:text-2xl font-bold text-indigo-600 break-words">{schools.length}</p>
-              <p className="text-xs text-gray-500">Total Schools</p>
+              <p className="text-xs text-muted-foreground">Total Schools</p>
             </CardContent>
           </Card>
         </div>
@@ -302,17 +302,17 @@ export default function AdminDashboard() {
           <p className="text-xl sm:text-2xl font-bold text-indigo-700 break-words">{projectedMrr.toLocaleString()} UGX</p>
           <p className="text-xs text-gray-400 mb-3">From {activeCount} active subscription{activeCount === 1 ? "" : "s"}, by tier next cycle</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
-            <div className="min-w-0 bg-gray-50 rounded-lg p-2">
+            <div className="min-w-0 bg-muted rounded-lg p-2">
               <p className="text-sm font-semibold break-words">{tierCounts.small}</p>
-              <p className="text-[10px] text-gray-500">Small</p>
+              <p className="text-[10px] text-muted-foreground">Small</p>
             </div>
-            <div className="min-w-0 bg-gray-50 rounded-lg p-2">
+            <div className="min-w-0 bg-muted rounded-lg p-2">
               <p className="text-sm font-semibold break-words">{tierCounts.medium}</p>
-              <p className="text-[10px] text-gray-500">Medium</p>
+              <p className="text-[10px] text-muted-foreground">Medium</p>
             </div>
-            <div className="min-w-0 bg-gray-50 rounded-lg p-2">
+            <div className="min-w-0 bg-muted rounded-lg p-2">
               <p className="text-sm font-semibold break-words">{tierCounts.large}</p>
-              <p className="text-[10px] text-gray-500">Large</p>
+              <p className="text-[10px] text-muted-foreground">Large</p>
             </div>
             <div className="min-w-0 bg-amber-50 rounded-lg p-2">
               <p className="text-sm font-semibold text-amber-700 break-words">{tierCounts.none}</p>
@@ -426,10 +426,10 @@ export default function AdminDashboard() {
               ends.setDate(ends.getDate() + 120); // ~1 term default
               const endsIso = ends.toISOString().slice(0, 10);
               return (
-                <div key={r.id} className="rounded-lg border bg-white p-3 flex flex-col sm:flex-row sm:items-center gap-2 justify-between">
+                <div key={r.id} className="rounded-lg border bg-card p-3 flex flex-col sm:flex-row sm:items-center gap-2 justify-between">
                   <div className="min-w-0 text-sm">
                     <p className="font-medium truncate">{r.schoolName}</p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-muted-foreground">
                       {Number(r.amount).toLocaleString()} UGX · {r.paymentMethod}
                       {r.referenceNumber ? ` · Ref ${r.referenceNumber}` : ""}
                     </p>
@@ -550,21 +550,21 @@ export default function AdminDashboard() {
                         <button
                           onClick={() => setNotesEdit({ schoolId: school.id, schoolName: school.name, notes: school.subscription?.notes ?? "" })}
                           title={hasNotes ? "View/edit notes" : "Add a note"}
-                          className={hasNotes ? "text-amber-500" : "text-gray-300 hover:text-gray-500"}
+                          className={hasNotes ? "text-amber-500" : "text-gray-300 hover:text-muted-foreground"}
                         >
                           <StickyNote className="h-3.5 w-3.5" />
                         </button>
                         <button
                           onClick={() => setHistorySchool({ schoolId: school.id, schoolName: school.name })}
                           title="Payment history"
-                          className="text-gray-300 hover:text-gray-500"
+                          className="text-gray-300 hover:text-muted-foreground"
                         >
                           <History className="h-3.5 w-3.5" />
                         </button>
                         <button
                           onClick={() => setContactEdit({ schoolId: school.id, schoolName: school.name, contactPhone: school.contactPhone ?? "" })}
                           title="Fix contact phone — where password-reset codes go"
-                          className="text-gray-300 hover:text-gray-500"
+                          className="text-gray-300 hover:text-muted-foreground"
                         >
                           <Phone className="h-3.5 w-3.5" />
                         </button>
@@ -599,7 +599,7 @@ export default function AdminDashboard() {
                           value={tier ?? "__none"}
                           onValueChange={(v) => updateTierMutation.mutate({ schoolId: school.id, tier: v === "__none" ? null : v as "small" | "medium" | "large" })}
                         >
-                          <SelectTrigger className="h-6 text-xs w-auto gap-1 border-none bg-gray-50 px-2">
+                          <SelectTrigger className="h-6 text-xs w-auto gap-1 border-none bg-muted px-2">
                             <SelectValue placeholder="Set tier..." />
                           </SelectTrigger>
                           <SelectContent>
@@ -800,7 +800,7 @@ export default function AdminDashboard() {
                     <p className="text-xs text-gray-400">
                       Term {p.term}, {p.year} · {p.paymentMethod} {p.referenceNumber ? `· Ref: ${p.referenceNumber}` : ""}
                     </p>
-                    {p.notes && <p className="text-xs text-gray-500 mt-0.5 truncate">{p.notes}</p>}
+                    {p.notes && <p className="text-xs text-muted-foreground mt-0.5 truncate">{p.notes}</p>}
                     {p.isVoided && (
                       <p className="text-xs text-red-500 mt-0.5">Voided{p.voidReason ? `: ${p.voidReason}` : ""}</p>
                     )}

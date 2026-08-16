@@ -82,7 +82,7 @@ export default function Signup() {
       <div className="w-full max-w-lg space-y-6">
         <div className="text-center">
           <img src={logoWordmark} alt="ScholarBase" className="h-12 w-auto mx-auto" />
-          <p className="text-gray-500 mt-2">Start your free 30-day trial</p>
+          <p className="text-muted-foreground mt-2">Start your free 30-day trial</p>
         </div>
 
         <Card>
@@ -92,7 +92,7 @@ export default function Signup() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">School Details</p>
+              <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">School Details</p>
 
               <div className="space-y-1">
                 <Label>School Name *</Label>
@@ -140,7 +140,7 @@ export default function Signup() {
                 <p className="text-xs text-gray-400">Password-reset codes are sent to this number — make sure it's correct.</p>
               </div>
 
-              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide pt-2">Your Account</p>
+              <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide pt-2">Your Account</p>
 
               <div className="space-y-1">
                 <Label>Your Full Name *</Label>
@@ -197,7 +197,7 @@ export default function Signup() {
           </CardContent>
         </Card>
 
-        <p className="text-center text-sm text-gray-600">
+        <p className="text-center text-sm text-muted-foreground">
           Already have an account?{" "}
           <Link href="/login" className="text-indigo-600 font-medium hover:underline">
             Sign in
@@ -205,7 +205,7 @@ export default function Signup() {
         </p>
         <p className="text-center text-xs text-gray-400">
           30-day free trial · Then from UGX 50,000 per term ·{" "}
-          <Link href="/#pricing" className="underline hover:text-gray-600">
+          <Link href="/#pricing" className="underline hover:text-muted-foreground">
             See pricing
           </Link>
         </p>

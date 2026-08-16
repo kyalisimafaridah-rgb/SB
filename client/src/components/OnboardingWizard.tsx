@@ -232,8 +232,8 @@ export default function OnboardingWizard({ onComplete }: { onComplete: () => voi
       <div className="w-full max-w-lg space-y-4">
         <div className="text-center">
           <GraduationCap className="h-10 w-10 text-indigo-600 mx-auto" />
-          <h1 className="text-2xl font-bold text-gray-900 mt-2">Welcome to ScholarBase</h1>
-          <p className="text-gray-500 text-sm mt-1">Let's set up your school in 4 quick steps</p>
+          <h1 className="text-2xl font-bold text-foreground mt-2">Welcome to ScholarBase</h1>
+          <p className="text-muted-foreground text-sm mt-1">Let's set up your school in 4 quick steps</p>
         </div>
 
         {/* Steps indicator */}
@@ -406,7 +406,7 @@ export default function OnboardingWizard({ onComplete }: { onComplete: () => voi
                 </Button>
 
                 {feeRows.some(r => r.amount) && (
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-muted-foreground">
                     Total per student:{" "}
                     <strong>
                       {feeRows.reduce((s, r) => s + (Number(r.amount) || 0), 0).toLocaleString()} UGX
@@ -431,7 +431,7 @@ export default function OnboardingWizard({ onComplete }: { onComplete: () => voi
             <CardContent className="py-8 text-center space-y-4">
               <CheckCircle className="h-14 w-14 text-green-500 mx-auto" />
               <h2 className="text-xl font-bold">You're all set!</h2>
-              <div className="text-sm text-gray-600 space-y-1 text-left bg-gray-50 rounded-lg p-4">
+              <div className="text-sm text-muted-foreground space-y-1 text-left bg-muted rounded-lg p-4">
                 <p>✓ School details saved</p>
                 <p>✓ Class <strong>{classPreviewName}</strong> created</p>
                 <p>✓ Fee structure set up</p>
@@ -441,7 +441,7 @@ export default function OnboardingWizard({ onComplete }: { onComplete: () => voi
                 <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4 text-left space-y-1">
                   <p className="text-xs text-indigo-600 font-semibold uppercase">Your School Code</p>
                   <p className="text-lg font-mono font-bold text-indigo-700">{existingSchool.schoolCode}</p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-muted-foreground">
                     Share this with parents — with their child's admission number, it's how they check fees at{" "}
                     <span className="font-mono break-all">{window.location.origin}/portal/{existingSchool.schoolCode}</span>.
                     You can always find it again in Settings.
@@ -450,18 +450,18 @@ export default function OnboardingWizard({ onComplete }: { onComplete: () => voi
               )}
 
               <div className="text-left space-y-2">
-                <p className="text-sm font-semibold text-gray-700">A few more things worth doing before day one:</p>
+                <p className="text-sm font-semibold text-muted-foreground">A few more things worth doing before day one:</p>
 
                 <button
                   type="button"
                   onClick={() => handleFinishAndGoTo("/settings")}
                   disabled={completeOnboardingMutation.isPending}
-                  className="w-full text-left text-sm bg-white border rounded-lg p-3 hover:border-indigo-300 transition-colors flex justify-between items-center gap-2"
+                  className="w-full text-left text-sm bg-card border rounded-lg p-3 hover:border-indigo-300 transition-colors flex justify-between items-center gap-2"
                 >
                   <span>
                     <strong>Add your other classes</strong>
                     <br />
-                    <span className="text-gray-500 text-xs">Only {classPreviewName || "one class"} exists so far — most schools need several.</span>
+                    <span className="text-muted-foreground text-xs">Only {classPreviewName || "one class"} exists so far — most schools need several.</span>
                   </span>
                   <span className="text-indigo-600 shrink-0">→</span>
                 </button>
@@ -470,12 +470,12 @@ export default function OnboardingWizard({ onComplete }: { onComplete: () => voi
                   type="button"
                   onClick={() => handleFinishAndGoTo("/settings")}
                   disabled={completeOnboardingMutation.isPending}
-                  className="w-full text-left text-sm bg-white border rounded-lg p-3 hover:border-indigo-300 transition-colors flex justify-between items-center gap-2"
+                  className="w-full text-left text-sm bg-card border rounded-lg p-3 hover:border-indigo-300 transition-colors flex justify-between items-center gap-2"
                 >
                   <span>
                     <strong>Set your real term dates</strong>
                     <br />
-                    <span className="text-gray-500 text-xs">Without this, the app guesses the current term from the calendar month — usually close, sometimes wrong.</span>
+                    <span className="text-muted-foreground text-xs">Without this, the app guesses the current term from the calendar month — usually close, sometimes wrong.</span>
                   </span>
                   <span className="text-indigo-600 shrink-0">→</span>
                 </button>
@@ -484,12 +484,12 @@ export default function OnboardingWizard({ onComplete }: { onComplete: () => voi
                   type="button"
                   onClick={() => handleFinishAndGoTo("/settings")}
                   disabled={completeOnboardingMutation.isPending}
-                  className="w-full text-left text-sm bg-white border rounded-lg p-3 hover:border-indigo-300 transition-colors flex justify-between items-center gap-2"
+                  className="w-full text-left text-sm bg-card border rounded-lg p-3 hover:border-indigo-300 transition-colors flex justify-between items-center gap-2"
                 >
                   <span>
                     <strong>Add your bursar as their own account</strong>
                     <br />
-                    <span className="text-gray-500 text-xs">Sharing your own login instead means every payment they record looks like it was you.</span>
+                    <span className="text-muted-foreground text-xs">Sharing your own login instead means every payment they record looks like it was you.</span>
                   </span>
                   <span className="text-indigo-600 shrink-0">→</span>
                 </button>
@@ -498,12 +498,12 @@ export default function OnboardingWizard({ onComplete }: { onComplete: () => voi
                   type="button"
                   onClick={() => handleFinishAndGoTo("/students")}
                   disabled={completeOnboardingMutation.isPending}
-                  className="w-full text-left text-sm bg-white border rounded-lg p-3 hover:border-indigo-300 transition-colors flex justify-between items-center gap-2"
+                  className="w-full text-left text-sm bg-card border rounded-lg p-3 hover:border-indigo-300 transition-colors flex justify-between items-center gap-2"
                 >
                   <span>
                     <strong>Add your students</strong>
                     <br />
-                    <span className="text-gray-500 text-xs">One at a time, or import a whole class at once from a CSV file.</span>
+                    <span className="text-muted-foreground text-xs">One at a time, or import a whole class at once from a CSV file.</span>
                   </span>
                   <span className="text-indigo-600 shrink-0">→</span>
                 </button>

@@ -153,8 +153,8 @@ export default function Settings() {
     cleared: "bg-green-100 text-green-700",
     partial: "bg-yellow-100 text-yellow-700",
     unpaid: "bg-red-100 text-red-700",
-    waiver: "bg-gray-100 text-gray-600",
-    noRecord: "bg-gray-50 text-gray-400",
+    waiver: "bg-muted text-muted-foreground",
+    noRecord: "bg-muted text-gray-400",
   };
 
   // The owner's account has a dummy "school" row under the hood (created
@@ -330,8 +330,8 @@ export default function Settings() {
               )}
             </div>
             {school && (
-              <div className="bg-gray-50 rounded px-3 py-2">
-                <p className="text-xs text-gray-500">Parent Portal Code</p>
+              <div className="bg-muted rounded px-3 py-2">
+                <p className="text-xs text-muted-foreground">Parent Portal Code</p>
                 <p className="text-lg font-mono font-bold text-indigo-700">{school.schoolCode}</p>
                 <p className="text-xs text-gray-400">Share this URL with parents:</p>
                 <p className="text-xs text-blue-500 break-all">
@@ -341,7 +341,7 @@ export default function Settings() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-6 px-2 text-xs text-gray-500 mt-1"
+                    className="h-6 px-2 text-xs text-muted-foreground mt-1"
                     onClick={() => setShowRegenerateConfirm(true)}
                   >
                     Regenerate code
@@ -387,9 +387,9 @@ export default function Settings() {
             {schoolTerms.length > 0 && (
               <div className="space-y-1">
                 {schoolTerms.map((t) => (
-                  <div key={t.id} className="flex items-center justify-between bg-gray-50 rounded px-3 py-2 text-sm">
+                  <div key={t.id} className="flex items-center justify-between bg-muted rounded px-3 py-2 text-sm">
                     <span className="font-medium">Term {t.term} · {t.year}</span>
-                    <span className="text-gray-500 text-xs">{t.startDate} → {t.endDate}</span>
+                    <span className="text-muted-foreground text-xs">{t.startDate} → {t.endDate}</span>
                   </div>
                 ))}
               </div>
@@ -455,7 +455,7 @@ export default function Settings() {
           <CardContent className="p-0">
             {staff.length === 0 ? (
               <div className="py-8 text-center space-y-1">
-                <p className="text-gray-500 text-sm">No staff accounts yet.</p>
+                <p className="text-muted-foreground text-sm">No staff accounts yet.</p>
                 <p className="text-gray-400 text-xs">Invite a bursar or auditor so they can sign in with their own email.</p>
               </div>
             ) : (
@@ -472,13 +472,13 @@ export default function Settings() {
                     <div className="flex items-center gap-2 shrink-0">
                       <span className={`text-xs px-2 py-1 rounded-full font-medium ${
                         s.schoolRole === "headTeacher" ? "bg-indigo-50 text-indigo-700" :
-                        s.schoolRole === "auditor" ? "bg-gray-100 text-gray-600" :
+                        s.schoolRole === "auditor" ? "bg-muted text-muted-foreground" :
                         "bg-emerald-50 text-emerald-700"
                       }`}>
                         {s.schoolRole === "headTeacher" ? "Head Teacher" : s.schoolRole === "auditor" ? "Auditor" : "Bursar"}
                       </span>
                       {!s.isActive && (
-                        <span className="text-xs px-2 py-1 rounded-full font-medium bg-gray-100 text-gray-500">
+                        <span className="text-xs px-2 py-1 rounded-full font-medium bg-muted text-muted-foreground">
                           Deactivated
                         </span>
                       )}
@@ -528,7 +528,7 @@ export default function Settings() {
         <CardContent className="p-0">
           {classes.length === 0 ? (
             <div className="py-8 text-center space-y-1">
-              <p className="text-gray-500 text-sm">No classes yet.</p>
+              <p className="text-muted-foreground text-sm">No classes yet.</p>
               <p className="text-gray-400 text-xs">Create classes (e.g. P1, S1) before adding students.</p>
             </div>
           ) : (
@@ -569,7 +569,7 @@ export default function Settings() {
           <CardHeader className="flex flex-row items-start justify-between gap-2">
             <div>
               <CardTitle className="text-base">Fee Structure</CardTitle>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-muted-foreground">
                 What each class costs, per term. New students get their fees assigned automatically using whatever's set here — this only needs updating when prices change or a new term starts.
               </p>
             </div>
@@ -638,19 +638,19 @@ export default function Settings() {
                 ) : (
                   <div className="border rounded-lg overflow-x-auto">
                     <table className="w-full text-sm min-w-[420px]">
-                      <thead className="bg-gray-50">
+                      <thead className="bg-muted">
                         <tr>
-                          <th className="text-left px-4 py-2 font-medium text-gray-600">Category</th>
-                          <th className="text-left px-4 py-2 font-medium text-gray-600">Label</th>
-                          <th className="text-right px-4 py-2 font-medium text-gray-600">Amount (UGX)</th>
+                          <th className="text-left px-4 py-2 font-medium text-muted-foreground">Category</th>
+                          <th className="text-left px-4 py-2 font-medium text-muted-foreground">Label</th>
+                          <th className="text-right px-4 py-2 font-medium text-muted-foreground">Amount (UGX)</th>
                           <th className="px-4 py-2" />
                         </tr>
                       </thead>
                       <tbody className="divide-y">
                         {structure.map((row) => (
                           <tr key={row.id}>
-                            <td className="px-4 py-2 capitalize text-gray-700">{categoryLabel(row.category)}</td>
-                            <td className="px-4 py-2 text-gray-600">{row.label}</td>
+                            <td className="px-4 py-2 capitalize text-muted-foreground">{categoryLabel(row.category)}</td>
+                            <td className="px-4 py-2 text-muted-foreground">{row.label}</td>
                             <td className="px-4 py-2 text-right font-medium">{parseFloat(row.amount).toLocaleString()}</td>
                             <td className="px-4 py-2 text-right">
                               <button
@@ -663,8 +663,8 @@ export default function Settings() {
                             </td>
                           </tr>
                         ))}
-                        <tr className="bg-gray-50 font-semibold">
-                          <td colSpan={2} className="px-4 py-2 text-gray-700">Total per student</td>
+                        <tr className="bg-muted font-semibold">
+                          <td colSpan={2} className="px-4 py-2 text-muted-foreground">Total per student</td>
                           <td className="px-4 py-2 text-right">{structureTotal.toLocaleString()} UGX</td>
                           <td />
                         </tr>
@@ -682,7 +682,7 @@ export default function Settings() {
         <Card>
           <CardHeader>
             <CardTitle className="text-base">Promote Class</CardTitle>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
               Move every active student from one class to another at once — e.g. end of year, P3 → P4.
             </p>
           </CardHeader>
@@ -727,7 +727,7 @@ export default function Settings() {
         <Card>
           <CardHeader>
             <CardTitle className="text-base">Graduate a Class</CardTitle>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
               For your final class (e.g. P7) — archives every active student in one go instead of one at a time. This can't be undone from here.
             </p>
           </CardHeader>
@@ -760,12 +760,12 @@ export default function Settings() {
         <CardContent>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-gray-600">Status</span>
+              <span className="text-muted-foreground">Status</span>
               <span className="font-medium capitalize">{user?.subscriptionStatus}</span>
             </div>
             {user?.trialEndsAt && (
               <div className="flex justify-between">
-                <span className="text-gray-600">Trial ends</span>
+                <span className="text-muted-foreground">Trial ends</span>
                 <span>{new Date(user.trialEndsAt).toLocaleDateString()}</span>
               </div>
             )}
@@ -899,7 +899,7 @@ export default function Settings() {
               </div>
             </div>
             {classForm.level && (
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Class name: <strong>{classForm.stream === "none" ? classForm.level : `${classForm.level}${classForm.stream}`}</strong>
               </p>
             )}
@@ -1100,7 +1100,7 @@ export default function Settings() {
       <Dialog open={showGenerateFees} onOpenChange={setShowGenerateFees}>
         <DialogContent>
           <DialogHeader><DialogTitle>Assign Fees</DialogTitle></DialogHeader>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted-foreground">
             Creates fee records for active students in this class who don't already have them for Term {feeStructureTerm} {feeStructureYear} —
             newly-enrolled students already get this automatically, so this is mainly for backfilling students who existed before the fee
             structure was set, or after a price change.
@@ -1119,7 +1119,7 @@ export default function Settings() {
       <Dialog open={showTransferTerm} onOpenChange={setShowTransferTerm}>
         <DialogContent>
           <DialogHeader><DialogTitle>Transfer to Next Term</DialogTitle></DialogHeader>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted-foreground">
             Assigns fees for every class that already has a fee structure set for the term below — same as running Assign Fees
             for each class one at a time, done for the whole school at once. Classes without a fee structure yet for that term are
             skipped and listed afterward, not silently missed. Any unpaid balance from the current term stays visible as arrears —
@@ -1204,7 +1204,7 @@ export default function Settings() {
               {transferResult.classesWithNoStructure.length === 0 &&
                transferResult.classesWithNoStudents.length === 0 &&
                transferResult.classesWithErrors.length === 0 && (
-                <p className="text-sm text-gray-500">Every class with students was covered.</p>
+                <p className="text-sm text-muted-foreground">Every class with students was covered.</p>
               )}
 
               {transferResult.classesWithNoStructure.length > 0 && (

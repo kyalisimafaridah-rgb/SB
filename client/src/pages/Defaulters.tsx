@@ -78,19 +78,19 @@ export default function Defaulters() {
         <Card className="min-w-0">
           <CardContent className="p-3 sm:p-4 text-center">
             <p className="text-2xl sm:text-3xl font-bold text-red-600 break-words">{defaulters.length}</p>
-            <p className="text-xs text-gray-500 mt-1">Total Defaulters</p>
+            <p className="text-xs text-muted-foreground mt-1">Total Defaulters</p>
           </CardContent>
         </Card>
         <Card className="min-w-0">
           <CardContent className="p-3 sm:p-4 text-center">
             <p className="text-base sm:text-lg font-bold text-red-600 break-words">{currentTermTotal.toLocaleString()}</p>
-            <p className="text-xs text-gray-500 mt-1">Current Term (UGX)</p>
+            <p className="text-xs text-muted-foreground mt-1">Current Term (UGX)</p>
           </CardContent>
         </Card>
         <Card className="min-w-0">
           <CardContent className="p-3 sm:p-4 text-center">
             <p className="text-base sm:text-lg font-bold text-amber-600 break-words">{arrearsTotal.toLocaleString()}</p>
-            <p className="text-xs text-gray-500 mt-1">Arrears (UGX)</p>
+            <p className="text-xs text-muted-foreground mt-1">Arrears (UGX)</p>
           </CardContent>
         </Card>
       </div>
@@ -165,21 +165,21 @@ export default function Defaulters() {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="bg-gray-50 border-b">
+                <thead className="bg-muted border-b">
                   <tr>
                     <th className="px-4 py-3 w-8" />
-                    <th className="text-left px-4 py-3 font-medium text-gray-600">Student</th>
-                    <th className="text-left px-4 py-3 font-medium text-gray-600">Class</th>
-                    <th className="text-right px-4 py-3 font-medium text-gray-600">Current Term</th>
-                    <th className="text-right px-4 py-3 font-medium text-gray-600">Arrears</th>
-                    <th className="text-right px-4 py-3 font-medium text-gray-600">Total</th>
-                    <th className="text-left px-4 py-3 font-medium text-gray-600">Last Payment</th>
+                    <th className="text-left px-4 py-3 font-medium text-muted-foreground">Student</th>
+                    <th className="text-left px-4 py-3 font-medium text-muted-foreground">Class</th>
+                    <th className="text-right px-4 py-3 font-medium text-muted-foreground">Current Term</th>
+                    <th className="text-right px-4 py-3 font-medium text-muted-foreground">Arrears</th>
+                    <th className="text-right px-4 py-3 font-medium text-muted-foreground">Total</th>
+                    <th className="text-left px-4 py-3 font-medium text-muted-foreground">Last Payment</th>
                     <th className="px-4 py-3" />
                   </tr>
                 </thead>
                 <tbody className="divide-y">
                   {defaulters.map((d) => (
-                    <tr key={d.studentId} className={selected.has(d.studentId) ? "bg-blue-50" : "hover:bg-gray-50"}>
+                    <tr key={d.studentId} className={selected.has(d.studentId) ? "bg-blue-50" : "hover:bg-muted"}>
                       <td className="px-4 py-3">
                         <Checkbox
                           checked={selected.has(d.studentId)}
@@ -190,7 +190,7 @@ export default function Defaulters() {
                         <p className="font-medium">{d.student?.firstName} {d.student?.lastName}</p>
                         <p className="text-xs text-gray-400">{d.student?.admissionNumber}</p>
                       </td>
-                      <td className="px-4 py-3 text-gray-600">{d.className}</td>
+                      <td className="px-4 py-3 text-muted-foreground">{d.className}</td>
                       <td className="px-4 py-3 text-right">
                         {d.currentTermBalance > 0 ? (
                           <span className="text-red-600 font-medium">{d.currentTermBalance.toLocaleString()}</span>

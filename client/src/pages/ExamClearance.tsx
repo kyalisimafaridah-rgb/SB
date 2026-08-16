@@ -82,7 +82,7 @@ export default function ExamClearance() {
           </Select>
         </div>
 
-        <div className="ml-auto text-sm text-gray-600">
+        <div className="ml-auto text-sm text-muted-foreground">
           {clearedCount} / {totalCount} cleared
         </div>
       </div>
@@ -93,19 +93,19 @@ export default function ExamClearance() {
             <p className="text-center py-10 text-gray-400 text-sm">Loading...</p>
           ) : filtered.length === 0 ? (
             <div className="py-10 text-center space-y-1 px-4">
-              <p className="text-gray-500 text-sm">No students found for the selected term.</p>
+              <p className="text-muted-foreground text-sm">No students found for the selected term.</p>
               <p className="text-gray-400 text-xs">Add students and assign fee records for this term first (Students + Fees / Settings).</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="bg-gray-50 border-b">
+                <thead className="bg-muted border-b">
                   <tr>
-                    <th className="text-left px-4 py-3 font-medium text-gray-600">Student</th>
-                    <th className="text-left px-4 py-3 font-medium text-gray-600">Class</th>
-                    <th className="text-right px-4 py-3 font-medium text-gray-600">Outstanding</th>
-                    <th className="text-center px-4 py-3 font-medium text-gray-600">Status</th>
-                    <th className="text-center px-4 py-3 font-medium text-gray-600">Toggle</th>
+                    <th className="text-left px-4 py-3 font-medium text-muted-foreground">Student</th>
+                    <th className="text-left px-4 py-3 font-medium text-muted-foreground">Class</th>
+                    <th className="text-right px-4 py-3 font-medium text-muted-foreground">Outstanding</th>
+                    <th className="text-center px-4 py-3 font-medium text-muted-foreground">Status</th>
+                    <th className="text-center px-4 py-3 font-medium text-muted-foreground">Toggle</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y">
@@ -114,12 +114,12 @@ export default function ExamClearance() {
                     // Bug 27: students with no fee records have nothing to clear — disable their toggle
                     const canToggle = s.hasFeeRecords;
                     return (
-                      <tr key={s.student.id} className="hover:bg-gray-50">
+                      <tr key={s.student.id} className="hover:bg-muted">
                         <td className="px-4 py-3">
                           <p className="font-medium">{s.student.firstName} {s.student.lastName}</p>
                           <p className="text-xs text-gray-400">{s.student.admissionNumber}</p>
                         </td>
-                        <td className="px-4 py-3 text-gray-600">{s.className}</td>
+                        <td className="px-4 py-3 text-muted-foreground">{s.className}</td>
                         <td className="px-4 py-3 text-right">
                           {s.outstandingBalance > 0 ? (
                             <span className="text-red-600 font-medium">{s.outstandingBalance.toLocaleString()} UGX</span>

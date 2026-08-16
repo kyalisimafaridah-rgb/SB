@@ -81,12 +81,12 @@ export default function BulkSMS() {
           <CardContent className="space-y-3">
             {/* Templates */}
             <div>
-              <p className="text-xs text-gray-500 mb-2">Quick templates:</p>
+              <p className="text-xs text-muted-foreground mb-2">Quick templates:</p>
               <div className="flex gap-2 flex-wrap">
                 {TEMPLATES.map((t) => (
                   <button
                     key={t.label}
-                    className="text-xs px-3 py-1.5 border rounded-full hover:bg-gray-50 text-gray-600"
+                    className="text-xs px-3 py-1.5 border rounded-full hover:bg-muted text-muted-foreground"
                     onClick={() => setMessage(t.text)}
                   >
                     {t.label}
@@ -115,7 +115,7 @@ export default function BulkSMS() {
             )}
 
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Will send to <strong>{parentCount}</strong> parent{parentCount !== 1 ? "s" : ""}
               </p>
               <Button
@@ -132,7 +132,7 @@ export default function BulkSMS() {
         <Card>
           <CardContent className="py-8 text-center space-y-2">
             <Lock className="h-6 w-6 text-gray-300 mx-auto" />
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               Sending SMS requires a bursar or head teacher account. You can still review the send history below.
             </p>
           </CardContent>
@@ -146,7 +146,7 @@ export default function BulkSMS() {
             <AlertDialogTitle>Send SMS to {parentCount} parent{parentCount !== 1 ? "s" : ""}?</AlertDialogTitle>
             <AlertDialogDescription>
               <span className="block mb-2">Message preview:</span>
-              <span className="block bg-gray-50 rounded p-2 text-sm text-gray-700 whitespace-pre-wrap">{message}</span>
+              <span className="block bg-muted rounded p-2 text-sm text-muted-foreground whitespace-pre-wrap">{message}</span>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -169,7 +169,7 @@ export default function BulkSMS() {
               {[...logs].reverse().map((log) => (
                 <div key={log.id} className="px-4 py-3">
                   <div className="flex justify-between items-start">
-                    <p className="text-sm text-gray-700 flex-1 mr-4">{log.message}</p>
+                    <p className="text-sm text-muted-foreground flex-1 mr-4">{log.message}</p>
                     <span className="text-xs text-gray-400 shrink-0">
                       {new Date(log.sentAt).toLocaleDateString()}
                     </span>

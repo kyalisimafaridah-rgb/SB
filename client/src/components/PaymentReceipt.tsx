@@ -46,9 +46,9 @@ export function PaymentReceipt({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 print:static print:bg-white print:p-0">
-      <div className="bg-white rounded-xl shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto print:shadow-none print:max-w-none print:rounded-none">
+      <div className="bg-card rounded-xl shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto print:shadow-none print:max-w-none print:rounded-none">
         <div className="flex items-center justify-between p-4 border-b print:hidden">
-          <h2 className="font-semibold text-gray-900">Payment receipt</h2>
+          <h2 className="font-semibold text-foreground">Payment receipt</h2>
           <div className="flex gap-2">
             <Button size="sm" onClick={handlePrint} className="bg-indigo-600 hover:bg-indigo-700">
               <Printer className="h-4 w-4 mr-1" /> Print
@@ -61,8 +61,8 @@ export function PaymentReceipt({
 
         <div className="p-6 space-y-4 text-sm" id="scholarbase-receipt">
           <div className="text-center border-b pb-4">
-            <p className="text-lg font-bold text-gray-900">{schoolName}</p>
-            <p className="text-xs text-gray-500 mt-1">Fee payment receipt</p>
+            <p className="text-lg font-bold text-foreground">{schoolName}</p>
+            <p className="text-xs text-muted-foreground mt-1">Fee payment receipt</p>
           </div>
 
           <div className="space-y-1">
@@ -80,10 +80,10 @@ export function PaymentReceipt({
 
           <div className="border rounded-lg overflow-hidden">
             <table className="w-full text-sm">
-              <thead className="bg-gray-50">
+              <thead className="bg-muted">
                 <tr>
-                  <th className="text-left px-3 py-2 font-medium text-gray-600">Receipt #</th>
-                  <th className="text-right px-3 py-2 font-medium text-gray-600">Amount</th>
+                  <th className="text-left px-3 py-2 font-medium text-muted-foreground">Receipt #</th>
+                  <th className="text-right px-3 py-2 font-medium text-muted-foreground">Amount</th>
                 </tr>
               </thead>
               <tbody>
@@ -95,7 +95,7 @@ export function PaymentReceipt({
                 ))}
               </tbody>
               <tfoot>
-                <tr className="border-t bg-gray-50 font-semibold">
+                <tr className="border-t bg-muted font-semibold">
                   <td className="px-3 py-2">Total</td>
                   <td className="px-3 py-2 text-right">{total.toLocaleString()} UGX</td>
                 </tr>
@@ -104,9 +104,9 @@ export function PaymentReceipt({
           </div>
 
           {outstandingAfter != null && (
-            <p className="text-center text-xs text-gray-500">
+            <p className="text-center text-xs text-muted-foreground">
               Outstanding balance after this payment:{" "}
-              <span className="font-medium text-gray-800">
+              <span className="font-medium text-foreground">
                 {Math.round(outstandingAfter).toLocaleString()} UGX
               </span>
             </p>
@@ -124,8 +124,8 @@ export function PaymentReceipt({
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between gap-4">
-      <span className="text-gray-500">{label}</span>
-      <span className="font-medium text-gray-900 text-right">{value}</span>
+      <span className="text-muted-foreground">{label}</span>
+      <span className="font-medium text-foreground text-right">{value}</span>
     </div>
   );
 }

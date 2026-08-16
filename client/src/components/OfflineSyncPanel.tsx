@@ -23,7 +23,7 @@ export function OfflineSyncPanel() {
       <Card>
         <CardHeader><CardTitle className="text-base">Offline Sync</CardTitle></CardHeader>
         <CardContent>
-          <p className="text-sm text-gray-500 flex items-center gap-1.5">
+          <p className="text-sm text-muted-foreground flex items-center gap-1.5">
             <Wifi className="h-4 w-4 text-green-600" /> Online — nothing waiting to sync.
           </p>
         </CardContent>

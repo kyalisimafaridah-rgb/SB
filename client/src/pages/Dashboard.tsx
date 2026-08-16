@@ -44,10 +44,10 @@ export default function Dashboard() {
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">
+        <h1 className="text-2xl font-bold text-foreground">
           Good {getGreeting()}, {user?.name?.split(" ")[0]}
         </h1>
-        <p className="text-gray-500 text-sm mt-1">
+        <p className="text-muted-foreground text-sm mt-1">
           Term {currentTerm} · {currentYear}{termStatus === "ended" ? " (ended)" : ""} · {user?.schoolName}
         </p>
       </div>
@@ -73,7 +73,7 @@ export default function Dashboard() {
       {totalStudents === 0 && (
         <Card>
           <CardContent className="py-8 text-center space-y-2">
-            <p className="text-gray-700 text-sm font-medium">Add your first students to get started</p>
+            <p className="text-muted-foreground text-sm font-medium">Add your first students to get started</p>
             <p className="text-gray-400 text-xs">You can add them one by one or import a CSV from the Students page.</p>
             <button
               onClick={() => navigate("/students")}
@@ -116,7 +116,7 @@ export default function Dashboard() {
                 key={d.studentId}
                 type="button"
                 onClick={() => navigate(`/fees?studentId=${d.studentId}`)}
-                className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 text-left"
+                className="w-full flex items-center justify-between px-4 py-3 hover:bg-muted text-left"
               >
                 <div>
                   <p className="text-sm font-medium">{d.student?.firstName} {d.student?.lastName}</p>
@@ -132,7 +132,7 @@ export default function Dashboard() {
       {!summaryLoading && summary && summary.totalExpected === 0 && (
         <Card>
           <CardContent className="py-10 text-center space-y-3">
-            <p className="text-gray-500 text-sm">No fees assigned yet for Term {currentTerm} {currentYear}.</p>
+            <p className="text-muted-foreground text-sm">No fees assigned yet for Term {currentTerm} {currentYear}.</p>
             <p className="text-gray-400 text-xs">
               Set amounts in Settings → Fee Structure, then assign fees from the Fees page or when adding students.
             </p>
@@ -162,9 +162,9 @@ function QuickAction({ icon: Icon, label, onClick }: {
   icon: React.ComponentType<{ className?: string }>; label: string; onClick: () => void;
 }) {
   return (
-    <button onClick={onClick} className="flex flex-col items-center gap-1.5 py-3 rounded-lg border bg-white hover:bg-gray-50 transition-colors">
+    <button onClick={onClick} className="flex flex-col items-center gap-1.5 py-3 rounded-lg border bg-card hover:bg-muted transition-colors">
       <div className="p-2 rounded-lg bg-indigo-50 text-indigo-600"><Icon className="h-4 w-4" /></div>
-      <span className="text-xs font-medium text-gray-700">{label}</span>
+      <span className="text-xs font-medium text-muted-foreground">{label}</span>
     </button>
   );
 }
@@ -183,8 +183,8 @@ function MetricCard({ title, value, icon: Icon, color }: {
         <div className="flex items-center gap-3">
           <div className={`p-2 rounded-lg ${colors[color]} shrink-0`}><Icon className="h-4 w-4" /></div>
           <div className="min-w-0">
-            <p className="text-xs text-gray-500">{title}</p>
-            <p className="text-lg font-bold text-gray-900 break-words">{value}</p>
+            <p className="text-xs text-muted-foreground">{title}</p>
+            <p className="text-lg font-bold text-foreground break-words">{value}</p>
           </div>
         </div>
       </CardContent>
@@ -195,8 +195,8 @@ function MetricCard({ title, value, icon: Icon, color }: {
 function Row({ label, value, highlight, warning }: { label: string; value: string; highlight?: boolean; warning?: boolean }) {
   return (
     <div className="flex justify-between">
-      <span className={`text-sm ${warning ? "text-amber-600" : "text-gray-600"}`}>{label}</span>
-      <span className={`font-semibold ${highlight ? "text-green-600" : warning ? "text-amber-600" : "text-gray-900"}`}>{value}</span>
+      <span className={`text-sm ${warning ? "text-amber-600" : "text-muted-foreground"}`}>{label}</span>
+      <span className={`font-semibold ${highlight ? "text-green-600" : warning ? "text-amber-600" : "text-foreground"}`}>{value}</span>
     </div>
   );
 }

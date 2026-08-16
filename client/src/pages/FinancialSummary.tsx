@@ -154,8 +154,8 @@ export default function FinancialSummary() {
           <Card>
             <CardContent className="p-5 flex items-center gap-4">
               <div className="flex-1">
-                <p className="text-sm text-gray-500">Collection Rate</p>
-                <p className="text-4xl font-bold text-gray-900">{summary.collectionRate}%</p>
+                <p className="text-sm text-muted-foreground">Collection Rate</p>
+                <p className="text-4xl font-bold text-foreground">{summary.collectionRate}%</p>
               </div>
               <div className="w-32 h-3 bg-gray-200 rounded-full overflow-hidden">
                 <div
@@ -172,20 +172,20 @@ export default function FinancialSummary() {
               <CardHeader><CardTitle className="text-base">By Class</CardTitle></CardHeader>
               <CardContent className="p-0 overflow-x-auto">
                 <table className="w-full text-sm min-w-[480px]">
-                  <thead className="bg-gray-50 border-b">
+                  <thead className="bg-muted border-b">
                     <tr>
-                      <th className="text-left px-4 py-2 font-medium text-gray-600">Class</th>
-                      <th className="text-right px-4 py-2 font-medium text-gray-600">Expected</th>
-                      <th className="text-right px-4 py-2 font-medium text-gray-600">Collected</th>
-                      <th className="text-right px-4 py-2 font-medium text-gray-600">Outstanding</th>
-                      <th className="text-right px-4 py-2 font-medium text-gray-600">Rate</th>
+                      <th className="text-left px-4 py-2 font-medium text-muted-foreground">Class</th>
+                      <th className="text-right px-4 py-2 font-medium text-muted-foreground">Expected</th>
+                      <th className="text-right px-4 py-2 font-medium text-muted-foreground">Collected</th>
+                      <th className="text-right px-4 py-2 font-medium text-muted-foreground">Outstanding</th>
+                      <th className="text-right px-4 py-2 font-medium text-muted-foreground">Rate</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
                     {summary.byClass.map((c) => (
-                      <tr key={c.classId} className="hover:bg-gray-50">
+                      <tr key={c.classId} className="hover:bg-muted">
                         <td className="px-4 py-2.5 font-medium">{c.name}</td>
-                        <td className="px-4 py-2.5 text-right text-gray-600">{c.expected.toLocaleString()}</td>
+                        <td className="px-4 py-2.5 text-right text-muted-foreground">{c.expected.toLocaleString()}</td>
                         <td className="px-4 py-2.5 text-right text-green-600">{c.paid.toLocaleString()}</td>
                         <td className="px-4 py-2.5 text-right text-red-600">{c.outstanding.toLocaleString()}</td>
                         <td className="px-4 py-2.5 text-right">
@@ -207,19 +207,19 @@ export default function FinancialSummary() {
               <CardHeader><CardTitle className="text-base">By Fee Category</CardTitle></CardHeader>
               <CardContent className="p-0 overflow-x-auto">
                 <table className="w-full text-sm min-w-[420px]">
-                  <thead className="bg-gray-50 border-b">
+                  <thead className="bg-muted border-b">
                     <tr>
-                      <th className="text-left px-4 py-2 font-medium text-gray-600">Category</th>
-                      <th className="text-right px-4 py-2 font-medium text-gray-600">Expected</th>
-                      <th className="text-right px-4 py-2 font-medium text-gray-600">Collected</th>
-                      <th className="text-right px-4 py-2 font-medium text-gray-600">Outstanding</th>
+                      <th className="text-left px-4 py-2 font-medium text-muted-foreground">Category</th>
+                      <th className="text-right px-4 py-2 font-medium text-muted-foreground">Expected</th>
+                      <th className="text-right px-4 py-2 font-medium text-muted-foreground">Collected</th>
+                      <th className="text-right px-4 py-2 font-medium text-muted-foreground">Outstanding</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
                     {summary.byCategory.map((c) => (
-                      <tr key={c.category} className="hover:bg-gray-50">
+                      <tr key={c.category} className="hover:bg-muted">
                         <td className="px-4 py-2.5 capitalize font-medium">{c.label}</td>
-                        <td className="px-4 py-2.5 text-right text-gray-600">{c.expected.toLocaleString()}</td>
+                        <td className="px-4 py-2.5 text-right text-muted-foreground">{c.expected.toLocaleString()}</td>
                         <td className="px-4 py-2.5 text-right text-green-600">{c.paid.toLocaleString()}</td>
                         <td className="px-4 py-2.5 text-right text-red-600">{c.outstanding.toLocaleString()}</td>
                       </tr>
@@ -236,7 +236,7 @@ export default function FinancialSummary() {
               <CardContent className="p-5">
                 <p className="text-sm font-semibold text-amber-700">Arrears from Previous Terms</p>
                 <div className="flex justify-between mt-2">
-                  <span className="text-sm text-gray-600">{summary.arrears.studentCount} students with arrears</span>
+                  <span className="text-sm text-muted-foreground">{summary.arrears.studentCount} students with arrears</span>
                   <span className="font-bold text-amber-700">{fmt(summary.arrears.total)}</span>
                 </div>
               </CardContent>
@@ -269,12 +269,12 @@ export default function FinancialSummary() {
         <CardContent className="space-y-3">
           {cashBalance && (
             <div className="grid grid-cols-2 gap-3 text-sm">
-              <div className="bg-gray-50 rounded px-3 py-2">
-                <p className="text-xs text-gray-500">Cash collected (all time)</p>
+              <div className="bg-muted rounded px-3 py-2">
+                <p className="text-xs text-muted-foreground">Cash collected (all time)</p>
                 <p className="font-semibold">{fmt(cashBalance.totalCashCollected)}</p>
               </div>
-              <div className="bg-gray-50 rounded px-3 py-2">
-                <p className="text-xs text-gray-500">Total deposited</p>
+              <div className="bg-muted rounded px-3 py-2">
+                <p className="text-xs text-muted-foreground">Total deposited</p>
                 <p className="font-semibold">{fmt(cashBalance.totalDeposited)}</p>
               </div>
               <div className={`rounded px-3 py-2 col-span-2 ${cashBalance.undepositedBalance > 0 ? "bg-amber-50" : "bg-green-50"}`}>
@@ -297,11 +297,11 @@ export default function FinancialSummary() {
 
           {deposits.length > 0 && (
             <div>
-              <p className="text-xs font-semibold text-gray-500 uppercase mb-2">Deposit History</p>
+              <p className="text-xs font-semibold text-muted-foreground uppercase mb-2">Deposit History</p>
               <div className="space-y-1">
                 {deposits.slice(0, 10).map((d) => (
                   <div key={d.id} className={`flex justify-between items-center text-sm py-1 border-b last:border-0 ${d.isVoided ? "opacity-50" : ""}`}>
-                    <span className={`text-gray-700 ${d.isVoided ? "line-through" : ""}`}>
+                    <span className={`text-muted-foreground ${d.isVoided ? "line-through" : ""}`}>
                       {fmt(parseFloat(d.amount))}
                       {d.isVoided && <span className="text-red-500 text-xs ml-1.5 no-underline">(voided)</span>}
                     </span>
@@ -347,7 +347,7 @@ export default function FinancialSummary() {
                   </div>
                   <div className="text-right">
                     {entry.amount && (
-                      <p className="text-gray-700">{parseFloat(entry.amount).toLocaleString()} UGX</p>
+                      <p className="text-muted-foreground">{parseFloat(entry.amount).toLocaleString()} UGX</p>
                     )}
                     <p className="text-xs text-gray-400">{new Date(entry.createdAt).toLocaleString()}</p>
                   </div>

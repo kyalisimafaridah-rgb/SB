@@ -29,9 +29,9 @@ const FEATURE_ICONS = [FileText, Users, Smartphone, MessageSquare, Shield, WifiO
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-card text-foreground">
       {/* Nav */}
-      <header className="border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur z-20">
+      <header className="border-b border-gray-100 sticky top-0 bg-card/95 backdrop-blur z-20">
         <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
           <Link href="/">
             <img src={logoWordmark} alt="ScholarBase" className="h-8 w-auto cursor-pointer" />
@@ -57,10 +57,10 @@ export default function Home() {
           <p className="text-sm font-medium text-indigo-600 mb-3">
             Built for Ugandan schools
           </p>
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 max-w-2xl mx-auto leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-foreground max-w-2xl mx-auto leading-tight">
             Collect school fees without the chaos
           </h1>
-          <p className="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
+          <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
             Track every student balance, record MoMo and cash payments, chase
             defaulters with SMS, and give parents a simple portal — all in one
             place.
@@ -78,7 +78,7 @@ export default function Home() {
               </Button>
             </a>
           </div>
-          <p className="mt-4 text-sm text-gray-500">
+          <p className="mt-4 text-sm text-muted-foreground">
             No setup fee · No long contract · Cancel anytime
           </p>
         </div>
@@ -89,7 +89,7 @@ export default function Home() {
         <h2 className="text-2xl sm:text-3xl font-bold text-center mb-3">
           Everything your bursar needs
         </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-lg mx-auto">
+        <p className="text-center text-muted-foreground mb-12 max-w-lg mx-auto">
           Designed around how Ugandan schools actually collect fees — terms,
           streams, UNEB, lunch, and mobile money.
         </p>
@@ -99,13 +99,13 @@ export default function Home() {
             return (
               <div
                 key={f.title}
-                className="rounded-xl border border-gray-100 bg-gray-50/50 p-5 hover:border-indigo-200 transition-colors"
+                className="rounded-xl border border-gray-100 bg-muted/50 p-5 hover:border-indigo-200 transition-colors"
               >
                 <div className="h-9 w-9 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center mb-3">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="font-semibold text-gray-900">{f.title}</h3>
-                <p className="mt-1.5 text-sm text-gray-600 leading-relaxed">
+                <h3 className="font-semibold text-foreground">{f.title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
                   {f.description}
                 </p>
               </div>
@@ -115,12 +115,12 @@ export default function Home() {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="bg-gray-50 border-y border-gray-100">
+      <section id="pricing" className="bg-muted border-y border-gray-100">
         <div className="max-w-5xl mx-auto px-4 py-16 sm:py-20">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-3">
             Simple pricing by school size
           </h2>
-          <p className="text-center text-gray-600 mb-10 max-w-md mx-auto">
+          <p className="text-center text-muted-foreground mb-10 max-w-md mx-auto">
             One plan, clear price. Pay per term. All features included on every
             tier.
           </p>
@@ -130,7 +130,7 @@ export default function Home() {
               return (
                 <div
                   key={tier}
-                  className={`relative rounded-2xl bg-white p-6 border-2 flex flex-col ${
+                  className={`relative rounded-2xl bg-card p-6 border-2 flex flex-col ${
                     popular
                       ? "border-indigo-500 shadow-lg shadow-indigo-100"
                       : "border-gray-200"
@@ -141,22 +141,22 @@ export default function Home() {
                       Most popular
                     </span>
                   )}
-                  <h3 className="font-bold text-lg text-gray-900">
+                  <h3 className="font-bold text-lg text-foreground">
                     {TIER_LABELS[tier]}
                   </h3>
-                  <p className="text-sm text-gray-500 mt-0.5">
+                  <p className="text-sm text-muted-foreground mt-0.5">
                     {TIER_STUDENT_RANGES[tier]}
                   </p>
                   <p className="mt-4">
-                    <span className="text-3xl font-bold text-gray-900">
+                    <span className="text-3xl font-bold text-foreground">
                       {formatUgx(TIER_AMOUNTS[tier])}
                     </span>
-                    <span className="text-sm text-gray-500 ml-1">{BILLING_PERIOD}</span>
+                    <span className="text-sm text-muted-foreground ml-1">{BILLING_PERIOD}</span>
                   </p>
-                  <p className="mt-3 text-sm text-gray-600 flex-1">
+                  <p className="mt-3 text-sm text-muted-foreground flex-1">
                     {TIER_DESCRIPTIONS[tier]}
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm text-gray-700">
+                  <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                     {[
                       "Unlimited students in tier",
                       "Fee tracking & payments",
@@ -186,7 +186,7 @@ export default function Home() {
               );
             })}
           </div>
-          <p className="text-center text-sm text-gray-500 mt-8">
+          <p className="text-center text-sm text-muted-foreground mt-8">
             After the {TRIAL_DAYS}-day trial, message us on WhatsApp to activate
             your plan. MTN MoMo, Airtel Money, or bank transfer accepted.
           </p>
@@ -198,7 +198,7 @@ export default function Home() {
         <h2 className="text-2xl sm:text-3xl font-bold mb-3">
           Ready to stop chasing paper receipts?
         </h2>
-        <p className="text-gray-600 mb-6 max-w-md mx-auto">
+        <p className="text-muted-foreground mb-6 max-w-md mx-auto">
           Set up your school in minutes. Invite your bursar. Start recording
           payments the same day.
         </p>
@@ -211,16 +211,16 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-gray-100 py-8">
-        <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-500">
+        <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <img src={logoWordmark} alt="ScholarBase" className="h-5 w-auto opacity-70" />
             <span>© {new Date().getFullYear()} ScholarBase</span>
           </div>
           <div className="flex gap-4">
-            <Link href="/login" className="hover:text-gray-800">
+            <Link href="/login" className="hover:text-foreground">
               Sign in
             </Link>
-            <Link href="/signup" className="hover:text-gray-800">
+            <Link href="/signup" className="hover:text-foreground">
               Sign up
             </Link>
           </div>

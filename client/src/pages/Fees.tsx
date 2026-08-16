@@ -254,7 +254,7 @@ export default function Fees() {
               {searchResults.slice(0, 8).map((s) => (
                 <button
                   key={s.id}
-                  className="w-full text-left px-4 py-2.5 hover:bg-gray-50 flex items-center justify-between gap-2"
+                  className="w-full text-left px-4 py-2.5 hover:bg-muted flex items-center justify-between gap-2"
                   onClick={() => setSelectedStudentId(s.id)}
                 >
                   <span className="text-sm font-medium min-w-0 truncate">{s.firstName} {s.lastName}</span>
@@ -301,7 +301,7 @@ export default function Fees() {
             {recordsLoading ? (
               <p className="text-sm text-gray-400">Loading fee records…</p>
             ) : studentRecords.length === 0 ? (
-              <div className="text-sm text-gray-500 space-y-1 py-2">
+              <div className="text-sm text-muted-foreground space-y-1 py-2">
                 <p>No fee records for this student yet.</p>
                 <p className="text-xs text-gray-400">
                   Assign fees from Settings → Fee Structure (set amounts), then use “Generate fees” or add fees when enrolling the student.
@@ -314,13 +314,13 @@ export default function Fees() {
                     balance carried over from last term or last year is
                     impossible to mistake for a current charge. */}
                 <div>
-                  <p className="text-xs font-semibold text-gray-500 uppercase mb-2">What's Owed</p>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase mb-2">What's Owed</p>
                   <div className="space-y-2">
                     {unpaidRecordsSorted.map((r) => {
                       const balance = Math.max(0, parseFloat(r.amountExpected) - parseFloat(r.amountPaid));
                       const isCurrent = r.year === maxYear && r.term === maxTerm;
                       return (
-                        <div key={r.id} className={`flex items-center justify-between gap-2 rounded px-3 py-2 ${isCurrent ? "bg-gray-50" : "bg-amber-50"}`}>
+                        <div key={r.id} className={`flex items-center justify-between gap-2 rounded px-3 py-2 ${isCurrent ? "bg-muted" : "bg-amber-50"}`}>
                           <div className="min-w-0">
                             <div className="flex items-center gap-2 flex-wrap">
                               <p className="text-sm font-medium truncate">{r.label}</p>
@@ -349,7 +349,7 @@ export default function Fees() {
                       );
                     })}
                     {studentRecords.filter(r => r.isWaiver).map((r) => (
-                      <div key={r.id} className="flex items-center justify-between gap-2 bg-gray-50 rounded px-3 py-2">
+                      <div key={r.id} className="flex items-center justify-between gap-2 bg-muted rounded px-3 py-2">
                         <div className="min-w-0">
                           <p className="text-sm font-medium truncate">{r.label}</p>
                           <p className="text-xs text-gray-400 truncate">Waived: {r.waiverNote}</p>
@@ -384,12 +384,12 @@ export default function Fees() {
                 {/* Payment history */}
                 {studentPayments.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold text-gray-500 uppercase mb-2">Payment History</p>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase mb-2">Payment History</p>
                     <div className="space-y-1">
                       {studentPayments.map((p) => (
                         <div key={p.id} className={`flex justify-between gap-2 text-sm py-1 ${p.isVoided ? "opacity-50" : ""}`}>
                           <div className="min-w-0 truncate">
-                            <span className={p.isVoided ? "text-gray-400 line-through" : "text-gray-700"}>
+                            <span className={p.isVoided ? "text-gray-400 line-through" : "text-muted-foreground"}>
                               {parseFloat(p.amount).toLocaleString()} UGX
                             </span>
                             <span className="text-gray-400 text-xs ml-2">{p.paymentMethod}</span>
@@ -400,7 +400,7 @@ export default function Fees() {
                           <div className="text-right flex items-center gap-2 shrink-0">
                             <div>
                               <p className="text-xs text-gray-400">{p.paymentDate}</p>
-                              <p className="text-xs text-gray-500">{p.receiptNumber}</p>
+                              <p className="text-xs text-muted-foreground">{p.receiptNumber}</p>
                             </div>
                             {isHeadTeacher && !p.isVoided && (
                               <button
@@ -427,7 +427,7 @@ export default function Fees() {
       <Dialog open={showPayment} onOpenChange={setShowPayment}>
         <DialogContent>
           <DialogHeader><DialogTitle>Record Payment</DialogTitle></DialogHeader>
-          <p className="text-sm text-gray-600">Total outstanding: <strong>{outstanding.toLocaleString()} UGX</strong></p>
+          <p className="text-sm text-muted-foreground">Total outstanding: <strong>{outstanding.toLocaleString()} UGX</strong></p>
           <div className="space-y-3">
             <div>
               <Label>Amount Received (UGX) *</Label>
@@ -563,7 +563,7 @@ export default function Fees() {
       <Dialog open={showGenerate} onOpenChange={setShowGenerate}>
         <DialogContent>
           <DialogHeader><DialogTitle>Assign class fees</DialogTitle></DialogHeader>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted-foreground">
             Creates fee records for active students in the class who do not already have them for Term {defaultTerm} {currentYear}.
             New students already get fees on enrollment — use this to backfill.
           </p>

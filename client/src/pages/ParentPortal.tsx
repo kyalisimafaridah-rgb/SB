@@ -76,7 +76,7 @@ export default function ParentPortal() {
   }, 0);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-muted">
       {/* Header */}
       <div className="bg-indigo-700 text-white px-4 py-5">
         <div className="max-w-lg mx-auto flex items-center gap-3">
@@ -93,7 +93,7 @@ export default function ParentPortal() {
         <Card>
           <CardContent className="pt-5">
             <form onSubmit={handleSearch} className="space-y-3">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-muted-foreground">
                 Enter your child's admission number
               </label>
               <div className="flex gap-2">
@@ -122,7 +122,7 @@ export default function ParentPortal() {
 
         {/* Search results */}
         {searched && !searching && !searchError && students.length === 0 && (
-          <p className="text-center text-gray-500 text-sm py-4">
+          <p className="text-center text-muted-foreground text-sm py-4">
             No student found. Double-check the admission number or contact the school.
           </p>
         )}
@@ -134,7 +134,7 @@ export default function ParentPortal() {
               {students.map((s) => (
                 <button
                   key={s.id}
-                  className="w-full text-left px-4 py-3 hover:bg-gray-50 border-b last:border-0 flex justify-between items-center"
+                  className="w-full text-left px-4 py-3 hover:bg-muted border-b last:border-0 flex justify-between items-center"
                   onClick={() => setSelectedStudentId(s.id)}
                 >
                   <div>
@@ -159,14 +159,14 @@ export default function ParentPortal() {
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="text-xs text-gray-500 hover:text-gray-800 border rounded px-2 py-1"
+                className="text-xs text-muted-foreground hover:text-foreground border rounded px-2 py-1"
               >
                 Print balance
               </button>
             </div>
 
             {relatedStudents.length > 0 && (
-              <div className="bg-white border rounded-lg p-3">
+              <div className="bg-card border rounded-lg p-3">
                 <p className="text-xs text-gray-400 mb-2">Also linked to this contact number:</p>
                 <div className="flex flex-wrap gap-2">
                   {relatedStudents.map((s) => (
@@ -192,7 +192,7 @@ export default function ParentPortal() {
               <CardContent className="space-y-4">
                 {/* Outstanding summary */}
                 <div className={`rounded-lg px-4 py-3 ${totalOutstanding === 0 ? "bg-green-50 border border-green-200" : "bg-red-50 border border-red-200"}`}>
-                  <p className="text-xs text-gray-500">Total Outstanding</p>
+                  <p className="text-xs text-muted-foreground">Total Outstanding</p>
                   <p className={`text-2xl font-bold ${totalOutstanding === 0 ? "text-green-600" : "text-red-600"}`}>
                     {totalOutstanding === 0 ? "Fully Paid ✓" : `${totalOutstanding.toLocaleString()} UGX`}
                   </p>
@@ -201,13 +201,13 @@ export default function ParentPortal() {
                 {/* Current term breakdown */}
                 {currentTermRecords.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold text-gray-500 uppercase mb-2">Term {latestTerm} {latestYear}</p>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase mb-2">Term {latestTerm} {latestYear}</p>
                     <div className="space-y-1.5">
                       {currentTermRecords.map((r) => {
                         const balance = r.isWaiver ? 0 : Math.max(0, parseFloat(r.amountExpected) - parseFloat(r.amountPaid));
                         return (
                           <div key={r.id} className="flex justify-between text-sm">
-                            <span className="text-gray-600">{r.label}</span>
+                            <span className="text-muted-foreground">{r.label}</span>
                             <span className={balance === 0 ? "text-green-600 font-medium" : "text-red-600 font-medium"}>
                               {r.isWaiver ? "Waived" : balance === 0 ? "Paid" : `${balance.toLocaleString()} UGX`}
                             </span>
@@ -228,7 +228,7 @@ export default function ParentPortal() {
                         if (bal === 0) return null;
                         return (
                           <div key={r.id} className="flex justify-between text-sm">
-                            <span className="text-gray-600">{r.label} (T{r.term} {r.year})</span>
+                            <span className="text-muted-foreground">{r.label} (T{r.term} {r.year})</span>
                             <span className="text-amber-600 font-medium">{bal.toLocaleString()} UGX</span>
                           </div>
                         );
@@ -240,7 +240,7 @@ export default function ParentPortal() {
                 {/* Payment history */}
                 {payments.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold text-gray-500 uppercase mb-2">Payment History</p>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase mb-2">Payment History</p>
                     <div className="space-y-1.5">
                       {payments.map((p) => (
                         <div key={p.id} className="flex justify-between text-sm">
@@ -249,7 +249,7 @@ export default function ParentPortal() {
                             <span className="text-gray-400 text-xs ml-2">{p.paymentMethod}</span>
                           </div>
                           <div className="text-right">
-                            <p className="text-gray-500 text-xs">{p.paymentDate}</p>
+                            <p className="text-muted-foreground text-xs">{p.paymentDate}</p>
                             <p className="text-gray-300 text-xs">{p.receiptNumber}</p>
                           </div>
                         </div>

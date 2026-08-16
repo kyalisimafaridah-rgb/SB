@@ -26,7 +26,7 @@ const FEE_STATUS_COLORS: Record<string, string> = {
   cleared: "bg-green-100 text-green-700",
   partial: "bg-yellow-100 text-yellow-700",
   unpaid: "bg-red-100 text-red-700",
-  waiver: "bg-gray-100 text-gray-600",
+  waiver: "bg-muted text-muted-foreground",
 };
 
 const AUDIT_FIELD_LABELS: Record<string, string> = {
@@ -521,7 +521,7 @@ export default function Students() {
       </div>
 
       {isHeadTeacher && (
-        <label className="flex items-center gap-2 text-xs text-gray-500 mt-1.5 cursor-pointer w-fit">
+        <label className="flex items-center gap-2 text-xs text-muted-foreground mt-1.5 cursor-pointer w-fit">
           <input
             type="checkbox"
             checked={includeArchived}
@@ -540,7 +540,7 @@ export default function Students() {
                 <p className="text-gray-400 text-sm">No students match “{debouncedSearch}”. Try a different name or admission number.</p>
               ) : (
                 <>
-                  <p className="text-gray-600 text-sm font-medium">No students yet</p>
+                  <p className="text-muted-foreground text-sm font-medium">No students yet</p>
                   <p className="text-gray-400 text-xs">Add one student or import a class list from CSV.</p>
                   <button
                     type="button"
@@ -582,7 +582,7 @@ export default function Students() {
                           <Badge variant="outline" className="text-xs shrink-0">{student.specialStatus}</Badge>
                         )}
                         {student.status === "archived" && (
-                          <Badge variant="outline" className="text-xs shrink-0 border-gray-300 text-gray-500 bg-gray-50">
+                          <Badge variant="outline" className="text-xs shrink-0 border-gray-300 text-muted-foreground bg-muted">
                             Archived
                           </Badge>
                         )}
@@ -605,7 +605,7 @@ export default function Students() {
                       )}
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <button className="p-1.5 text-gray-400 hover:text-gray-600 transition-colors" title="More actions">
+                          <button className="p-1.5 text-gray-400 hover:text-muted-foreground transition-colors" title="More actions">
                             <MoreVertical className="h-4 w-4" />
                           </button>
                         </DropdownMenuTrigger>
@@ -765,7 +765,7 @@ export default function Students() {
       <Dialog open={showArchive} onOpenChange={setShowArchive}>
         <DialogContent>
           <DialogHeader><DialogTitle>Archive Student</DialogTitle></DialogHeader>
-          <p className="text-sm text-gray-600">This student will be removed from active lists but their fee history is preserved.</p>
+          <p className="text-sm text-muted-foreground">This student will be removed from active lists but their fee history is preserved.</p>
           <div className="space-y-2">
             <Label>Reason *</Label>
             <Input
@@ -944,9 +944,9 @@ export default function Students() {
                     <p className="text-sm">
                       <span className="font-medium">{AUDIT_FIELD_LABELS[entry.field] ?? entry.field}</span>
                       {" changed from "}
-                      <span className="text-gray-500">"{entry.oldValue || "—"}"</span>
+                      <span className="text-muted-foreground">"{entry.oldValue || "—"}"</span>
                       {" to "}
-                      <span className="text-gray-900">"{entry.newValue || "—"}"</span>
+                      <span className="text-foreground">"{entry.newValue || "—"}"</span>
                     </p>
                     <p className="text-xs text-gray-400 mt-0.5">
                       {new Date(entry.changedAt).toLocaleString()} · {staffNameById.get(entry.userId) ?? `Staff #${entry.userId}`}

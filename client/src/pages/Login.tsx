@@ -50,7 +50,7 @@ export default function Login() {
           <Link href="/">
             <img src={logoWordmark} alt="ScholarBase" className="h-12 w-auto mx-auto cursor-pointer" />
           </Link>
-          <p className="text-gray-500 mt-2">School Fees Management</p>
+          <p className="text-muted-foreground mt-2">School Fees Management</p>
         </div>
 
         <Card>
@@ -108,7 +108,7 @@ export default function Login() {
           </CardContent>
         </Card>
 
-        <p className="text-center text-sm text-gray-600">
+        <p className="text-center text-sm text-muted-foreground">
           New school?{" "}
           <Link href="/signup" className="text-indigo-600 font-medium hover:underline">
             Start free trial

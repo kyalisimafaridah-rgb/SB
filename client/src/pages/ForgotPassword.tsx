@@ -81,7 +81,7 @@ export default function ForgotPassword() {
       <div className="w-full max-w-md space-y-6">
         <div className="text-center">
           <img src={logoWordmark} alt="ScholarBase" className="h-12 w-auto mx-auto" />
-          <p className="text-gray-500 mt-2">Reset your password</p>
+          <p className="text-muted-foreground mt-2">Reset your password</p>
         </div>
 
         <Card>
@@ -169,7 +169,7 @@ export default function ForgotPassword() {
 
                 <button
                   type="button"
-                  className="text-xs text-gray-500 hover:underline w-full text-center"
+                  className="text-xs text-muted-foreground hover:underline w-full text-center"
                   onClick={() => { setStep("request"); setError(""); }}
                 >
                   Didn't get a code? Request again
@@ -181,7 +181,7 @@ export default function ForgotPassword() {
 
         <button
           onClick={() => navigate("/login")}
-          className="flex items-center justify-center gap-1 text-sm text-gray-600 hover:text-indigo-600 w-full"
+          className="flex items-center justify-center gap-1 text-sm text-muted-foreground hover:text-indigo-600 w-full"
         >
           <ArrowLeft className="h-3.5 w-3.5" /> Back to Sign In
         </button>
