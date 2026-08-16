@@ -1,5 +1,6 @@
 import { Switch, Route, Redirect } from "wouter";
 import { isTokenValid, getUser, clearToken } from "./_core/hooks/useAuth";
+import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -79,6 +80,7 @@ function postLoginRedirectPath() {
 
 export default function App() {
   return (
+    <ThemeProvider defaultTheme="dark" switchable={false}>
     <Switch>
       {/* Public routes — redirect to dashboard if already logged in */}
       <Route path="/">
@@ -141,5 +143,6 @@ export default function App() {
 
       <Route component={NotFound} />
     </Switch>
+    </ThemeProvider>
   );
 }
