@@ -1,0 +1,293 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  ScholarBase design system.
+
+  Grounded choice, not a template default: this is a financial tool used by
+  school bursars on Android phones, often outdoors, often under time
+  pressure -- not a marketing site browsed at leisure. "Looks like a website"
+  meant: pure-white canvas with no depth, and Tailwind's stock indigo/gray
+  used as literal utility classes everywhere (bg-indigo-600, text-gray-400)
+  with no relationship to a considered palette.
+
+  Fix, in order of leverage:
+  1. The semantic --background token was pure white (oklch(1 0 0)) -- the
+     single biggest reason every page read as flat and generic. Now a soft,
+     cool-tinted off-white, with cards staying pure white so they lift off
+     the canvas instead of blending into it.
+  2. Tailwind's raw indigo/gray/blue scales are redefined below, hue-shifted
+     toward one deliberate navy-blue (matching the logo already shipped),
+     with each step's LIGHTNESS preserved from Tailwind's defaults. Every
+     page in this app hardcodes these classes directly rather than the
+     semantic tokens -- remapping the scales themselves means the entire
+     product re-themes at once, with no risk of touching 15+ page files
+     individually and no risk of breaking existing contrast pairings
+     (bg-indigo-50 + text-indigo-700 keeps the exact same relationship it
+     always had, just in the new hue).
+  3. One deliberate accent -- warm gold -- used sparingly for money/receipt
+     moments specifically. Not a wholesale recolor: paid/overdue status
+     still uses the same green/red everyone's already learned to read.
+*/
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+
+  /* Remapped scales -- hue shifted to 258 (the logo's navy-blue), lightness
+     steps preserved from Tailwind's defaults so every existing usage across
+     every page keeps its original contrast relationship. */
+  --color-indigo-50: oklch(0.97 0.014 258);
+  --color-indigo-100: oklch(0.93 0.032 258);
+  --color-indigo-200: oklch(0.87 0.065 258);
+  --color-indigo-300: oklch(0.78 0.100 258);
+  --color-indigo-400: oklch(0.65 0.150 258);
+  --color-indigo-500: oklch(0.55 0.180 258);
+  --color-indigo-600: oklch(0.47 0.190 258);
+  --color-indigo-700: oklch(0.40 0.170 258);
+  --color-indigo-800: oklch(0.33 0.140 258);
+  --color-indigo-900: oklch(0.24 0.100 258);
+  --color-indigo-950: oklch(0.17 0.070 258);
+
+  --color-blue-50: oklch(0.97 0.014 258);
+  --color-blue-100: oklch(0.93 0.032 258);
+  --color-blue-200: oklch(0.87 0.065 258);
+  --color-blue-300: oklch(0.78 0.100 258);
+  --color-blue-400: oklch(0.65 0.150 258);
+  --color-blue-500: oklch(0.55 0.180 258);
+  --color-blue-600: oklch(0.47 0.190 258);
+  --color-blue-700: oklch(0.40 0.170 258);
+  --color-blue-800: oklch(0.33 0.140 258);
+  --color-blue-900: oklch(0.24 0.100 258);
+  --color-blue-950: oklch(0.17 0.070 258);
+
+  --color-gray-50: oklch(0.98 0.004 258);
+  --color-gray-100: oklch(0.96 0.006 258);
+  --color-gray-200: oklch(0.91 0.008 258);
+  --color-gray-300: oklch(0.83 0.010 258);
+  --color-gray-400: oklch(0.65 0.012 258);
+  --color-gray-500: oklch(0.53 0.014 258);
+  --color-gray-600: oklch(0.43 0.014 258);
+  --color-gray-700: oklch(0.35 0.012 258);
+  --color-gray-800: oklch(0.27 0.010 258);
+  --color-gray-900: oklch(0.20 0.008 258);
+}
+
+:root {
+  --primary: var(--color-blue-600);
+  --primary-foreground: oklch(0.98 0.005 258);
+  --sidebar-primary: var(--color-gold-500);
+  --sidebar-primary-foreground: var(--color-indigo-950);
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+  --radius: 0.85rem;
+
+  /* Soft, cool off-white -- not pure white. Cards stay pure white below, so
+     they lift off this canvas instead of disappearing into it. */
+  --background: oklch(0.975 0.005 258);
+  --foreground: oklch(0.22 0.015 258);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.015 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.015 258);
+  --secondary: oklch(0.96 0.006 258);
+  --secondary-foreground: oklch(0.35 0.014 258);
+  --muted: oklch(0.96 0.006 258);
+  --muted-foreground: oklch(0.53 0.014 258);
+  --accent: oklch(0.95 0.012 258);
+  --accent-foreground: oklch(0.24 0.02 258);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.90 0.008 258);
+  --input: oklch(0.90 0.008 258);
+  --ring: oklch(0.55 0.18 258);
+
+  /* App chrome: deep navy, distinct from the light content area. This is
+     the main structural signal that this is an app shell, not a web page --
+     colored/dark navigation framing light content, the way native mobile
+     apps commonly look and generic dashboards commonly don't. */
+  --sidebar: oklch(0.20 0.045 258);
+  --sidebar-foreground: oklch(0.93 0.01 258);
+  --sidebar-accent: oklch(0.27 0.05 258);
+  --sidebar-accent-foreground: oklch(0.97 0.01 258);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: var(--color-gold-500);
+
+  /* Warm gold -- the one deliberate accent, used sparingly for money/receipt
+     moments (payment confirmations, revenue highlights). Deliberately not
+     used for status (paid/overdue stay green/red -- that's a learned
+     convention this app already relies on, not something to redecorate). */
+  --gold-50: oklch(0.97 0.03 75);
+  --gold-100: oklch(0.94 0.06 75);
+  --gold-400: oklch(0.80 0.13 75);
+  --gold-500: oklch(0.75 0.14 75);
+  --gold-600: oklch(0.65 0.14 70);
+  --gold-700: oklch(0.55 0.13 65);
+}
+
+.dark {
+  --primary: var(--color-blue-600);
+  --primary-foreground: oklch(0.98 0.005 258);
+  --sidebar-primary: var(--color-gold-500);
+  --sidebar-primary-foreground: var(--color-indigo-950);
+  --background: oklch(0.16 0.012 258);
+  --foreground: oklch(0.90 0.008 258);
+  --card: oklch(0.20 0.014 258);
+  --card-foreground: oklch(0.90 0.008 258);
+  --popover: oklch(0.20 0.014 258);
+  --popover-foreground: oklch(0.90 0.008 258);
+  --secondary: oklch(0.24 0.014 258);
+  --secondary-foreground: oklch(0.85 0.008 258);
+  --muted: oklch(0.24 0.014 258);
+  --muted-foreground: oklch(0.62 0.012 258);
+  --accent: oklch(0.27 0.02 258);
+  --accent-foreground: oklch(0.95 0.01 258);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.55 0.18 258);
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+  --sidebar: oklch(0.14 0.03 258);
+  --sidebar-foreground: oklch(0.93 0.01 258);
+  --sidebar-accent: oklch(0.22 0.04 258);
+  --sidebar-accent-foreground: oklch(0.97 0.01 258);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: var(--color-gold-500);
+  --gold-50: oklch(0.97 0.03 75);
+  --gold-100: oklch(0.94 0.06 75);
+  --gold-400: oklch(0.80 0.13 75);
+  --gold-500: oklch(0.75 0.14 75);
+  --gold-600: oklch(0.65 0.14 70);
+  --gold-700: oklch(0.55 0.13 65);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "tnum" 1, "cv11" 1;
+    /* Belt-and-suspenders: individual overflow bugs should be fixed at the
+       source, but one global safety net means a future one degrades into a
+       clipped edge instead of the whole page gaining a horizontal scrollbar. */
+    overflow-x: hidden;
+    /* Stops a top-of-page pull from chaining into the browser's own
+       pull-to-refresh/chrome-reveal gesture — that gesture is the single
+       biggest "this is just a website" tell on mobile. */
+    overscroll-behavior-y: contain;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html {
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .font-display {
+    font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+    /* Removes the ~300ms tap delay and disables double-tap-to-zoom on
+       controls specifically (page content can still be pinch-zoomed) —
+       taps register instantly, the way a native app's do. */
+    touch-action: manipulation;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+}
+
+@media print {
+  body * { visibility: hidden !important; }
+  #scholarbase-receipt, #scholarbase-receipt * { visibility: visible !important; }
+  #scholarbase-receipt {
+    position: absolute !important;
+    left: 0; top: 0; width: 100%;
+  }
+}
+

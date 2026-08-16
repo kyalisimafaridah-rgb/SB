@@ -1,0 +1,42 @@
+{
+  "name": "ScholarBase",
+  "short_name": "ScholarBase",
+  "description": "School fees management for Ugandan schools",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#141b2e",
+  "theme_color": "#141b2e",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-16.png",
+      "type": "image/png",
+      "sizes": "16x16",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32.png",
+      "type": "image/png",
+      "sizes": "32x32",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+# ScholarBase on Render — https://render.com
+# Blueprint: connect this repo, set env vars (see DEPLOY.md).
+# Database: use Supabase Postgres and paste DATABASE_URL into Render.
+
+services:
+  - type: web
+    name: scholarbase
+    runtime: node
+    plan: starter
+    region: frankfurt
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"
+      # Set these in the Render dashboard (do not commit secrets):
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        sync: false
+      - key: OWNER_EMAIL
+        sync: false
+      - key: AT_API_KEY
+        sync: false
+      - key: AT_USERNAME
+        sync: false
+      - key: VITE_SUPPORT_PHONE
+        sync: false
+      - key: VITE_ANALYTICS_ENDPOINT
+        sync: false
+      - key: VITE_ANALYTICS_WEBSITE_ID
+        sync: false

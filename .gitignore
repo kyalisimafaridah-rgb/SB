@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment files — NEVER commit real secrets
+.env
+.env.local
+.env.*.local
+
+# Editor/OS cruft
+.DS_Store
+.vscode/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+
+# Drizzle
+drizzle/migrations/meta/
+
+# TypeScript build info
+*.tsbuildinfo
