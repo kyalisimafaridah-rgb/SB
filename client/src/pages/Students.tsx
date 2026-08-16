@@ -202,9 +202,7 @@ export default function Students() {
     const reader = new FileReader();
     reader.onload = () => {
       const text = String(reader.result ?? "");
-      if (text.includes(";") && (text.split("
-")[0]?.split(";").length ?? 0) > (text.split("
-")[0]?.split(",").length ?? 0)) {
+      if (text.includes(";") && (text.split("\n")[0]?.split(";").length ?? 0) > (text.split("\n")[0]?.split(",").length ?? 0)) {
         toast.error("This looks like a semicolon-separated file. In Excel: Save As → CSV (Comma delimited).");
         return;
       }
