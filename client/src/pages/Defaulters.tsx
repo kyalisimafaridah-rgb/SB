@@ -29,6 +29,8 @@ export default function Defaulters() {
   // holds their choice and stops following the live value.
   const [termOverride, setTermOverride] = useState<number | null>(null);
   const [yearOverride, setYearOverride] = useState<number | null>(null);
+  const [filterClassId, setFilterClassId] = useState<number | undefined>(undefined);
+  const [selected, setSelected] = useState<Set<number>>(new Set());
   const term = termOverride ?? liveTerm;
   const year = yearOverride ?? liveYear;
 
