@@ -1,0 +1,20 @@
+name: Keep Render apps awake
+
+on:
+  schedule:
+    # Every 10 minutes — under Render's 15-minute sleep threshold, with margin
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {} # lets you trigger it manually from the Actions tab too
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping ScholarBase
+        run: curl -sS -o /dev/null -w "ScholarBase: %{http_code}\n" https://scholarbase-wvvt.onrender.com || true
+
+      - name: Ping CareDesk
+        run: curl -sS -o /dev/null -w "CareDesk: %{http_code}\n" https://caredesk-jkj0.onrender.com || true
+
+      - name: Ping Autocel
+        run: curl -sS -o /dev/null -w "Autocel: %{http_code}\n" https://autocel-bx1q.onrender.com || true
