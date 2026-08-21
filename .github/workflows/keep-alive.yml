@@ -11,10 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping ScholarBase
-        run: curl -sS -o /dev/null -w "ScholarBase: %{http_code}\n" https://scholarbase-wvvt.onrender.com || true
+        run: |
+          curl -sS -o /dev/null -w "ScholarBase: %{http_code}\n" https://scholarbase-wvvt.onrender.com || true
 
       - name: Ping CareDesk
-        run: curl -sS -o /dev/null -w "CareDesk: %{http_code}\n" https://caredesk-jkj0.onrender.com || true
+        run: |
+          curl -sS -o /dev/null -w "CareDesk: %{http_code}\n" https://caredesk-jkj0.onrender.com || true
 
       - name: Ping Autocel
-        run: curl -sS -o /dev/null -w "Autocel: %{http_code}\n" https://autocel-bx1q.onrender.com || true
+        run: |
+          curl -sS -o /dev/null -w "Autocel: %{http_code}\n" https://autocel-bx1q.onrender.com || true
